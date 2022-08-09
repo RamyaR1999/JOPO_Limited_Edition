@@ -11,7 +11,7 @@ if(isset($_POST["query"]))
  $search = str_replace(",", "|", $_POST["query"]);
  $query = "
  SELECT * FROM users 
- WHERE User_type='Users' AND Skills REGEXP '".$search."'
+ WHERE User_type='Job Seeker' AND Skills REGEXP '".$search."'
  OR CV_date REGEXP '".$search."' 
  OR Experience_years = '".$search."' 
  ";
@@ -28,7 +28,7 @@ if(isset($_POST["query"]))
 else
 {
  $query = "
- SELECT * FROM users WHERE User_type='Users' ORDER BY id 
+ SELECT * FROM users WHERE User_type='Job Seeker' ORDER BY id 
  ";
 }
 
