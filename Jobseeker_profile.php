@@ -369,7 +369,7 @@
 
             if($Skill != "" AND $Experienced == "" AND $CV_date == ""){
 
-                $query="SELECT * FROM users WHERE User_type='Users' AND Skills LIKE '%".$Skill."%' ";
+                $query="SELECT * FROM users WHERE User_type='Job Seeker' AND Skills LIKE '%".$Skill."%' ";
                 $search_users=mysqli_query($connection, $query);
 
                 ?>
@@ -437,7 +437,7 @@
                 $Experience_months =$row['Experience_months'];
                 $CV_date =$row['CV_date'];
 
-            if($User_type == "Users"){
+            if($User_type == "Job Seeker"){
         ?>
     <div class="col-12 col-sm-8 col-md-6 col-lg-10" style="margin-left: 100px;">
         <div class="card">
@@ -488,7 +488,7 @@
     }
 }elseif($Skill != "" AND $Experienced != "" AND $CV_date != ""){
 
-    $query="SELECT * FROM users WHERE Experience_years = '$Experienced' AND CV_date REGEXP '$CV_date' AND User_type='Users' AND Skills LIKE '%".$Skill."%' ";
+    $query="SELECT * FROM users WHERE Experience_years = '$Experienced' AND CV_date REGEXP '$CV_date' AND User_type='Job Seeker' AND Skills LIKE '%".$Skill."%' ";
 
     $search_users=mysqli_query($connection, $query);
 
@@ -554,7 +554,7 @@
         $Experience_months =$row['Experience_months'];
         $CV_date =$row['CV_date'];
 
-    if($User_type == "Users"){
+    if($User_type == "Job Seeker"){
 ?>
     <div class="col-12 col-sm-8 col-md-6 col-lg-10" style="margin-left: 100px;">
         <div class="card">
@@ -604,7 +604,7 @@
     }
 }elseif($Skill != "" AND $Experienced != "" AND $CV_date == ""){
 
-    $query="SELECT * FROM users WHERE Experience_years = '$Experienced' AND User_type='Users' AND Skills LIKE '%".$Skill."%' ";
+    $query="SELECT * FROM users WHERE Experience_years = '$Experienced' AND User_type='Job Seeker' AND Skills LIKE '%".$Skill."%' ";
     $search_users=mysqli_query($connection, $query); 
 
     if ($search_users = mysqli_query($connection, $query)) {
@@ -664,7 +664,7 @@
         $Experience_months =$row['Experience_months'];
         $CV_date =$row['CV_date'];
 
-    if($User_type == "Users"){
+    if($User_type == "Job Seeker"){
     ?>
     <div class="col-12 col-sm-8 col-md-6 col-lg-10" style="margin-left: 100px;">
         <div class="card">
@@ -713,7 +713,7 @@
     }
 }elseif($Skill != "" AND $CV_date != "" AND $Experienced == "" ){
 
-    $query="SELECT * FROM users WHERE CV_date REGEXP '$CV_date' AND User_type='Users' AND Skills LIKE '%".$Skill."%' ";
+    $query="SELECT * FROM users WHERE CV_date REGEXP '$CV_date' AND User_type='Job Seeker' AND Skills LIKE '%".$Skill."%' ";
     $search_users=mysqli_query($connection, $query); 
 
     if ($search_users = mysqli_query($connection, $query)) {
@@ -772,7 +772,7 @@
         $Experience_months =$row['Experience_months'];
         $CV_date =$row['CV_date'];
 
-    if($User_type == "Users"){
+    if($User_type == "Job Seeker"){
 ?>
     <div class="col-12 col-sm-8 col-md-6 col-lg-10" style="margin-left: 100px;">
         <div class="card">
@@ -821,7 +821,7 @@
     }
 }elseif($Skill == "" AND $CV_date != "" AND $Experienced != "" ){
 
-    $query="SELECT * FROM users WHERE Experience_years = '$Experienced' AND CV_date REGEXP '$CV_date' AND User_type='Users' ";
+    $query="SELECT * FROM users WHERE Experience_years = '$Experienced' AND CV_date REGEXP '$CV_date' AND User_type='Job Seeker' ";
     $search_users=mysqli_query($connection, $query); 
     
     if ($search_users = mysqli_query($connection, $query)) {
@@ -880,7 +880,7 @@
         $Experience_months =$row['Experience_months'];
         $CV_date =$row['CV_date'];
 
-    if($User_type == "Users"){
+    if($User_type == "Job Seeker"){
 ?>
     <div class="col-12 col-sm-8 col-md-6 col-lg-10" style="margin-left: 100px;">
         <div class="card">
@@ -990,7 +990,7 @@
         $Experience_months =$row['Experience_months'];
         $CV_date =$row['CV_date'];
 
-    if($User_type == "Users"){
+    if($User_type == "Job Seeker"){
 ?>
     <div class="col-12 col-sm-8 col-md-6 col-lg-10" style="margin-left: 100px;">
         <div class="card">
@@ -1039,7 +1039,7 @@
     }
 }elseif($Skill == "" AND $CV_date != "" AND $Experienced == "" ){
 
-    $query="SELECT * FROM users WHERE CV_date REGEXP '$CV_date' AND User_type='Users'";
+    $query="SELECT * FROM users WHERE CV_date REGEXP '$CV_date' AND User_type='Job Seeker'";
     $search_users=mysqli_query($connection, $query);
 
     if ($search_users = mysqli_query($connection, $query)) {
@@ -1101,7 +1101,7 @@
         $Experience_months =$row['Experience_months'];
         $CV_date =$row['CV_date'];
 
-    if($User_type == "Users"){
+    if($User_type == "Job Seeker"){
 ?>
     <div class="col-12 col-sm-8 col-md-6 col-lg-10" style="margin-left: 100px;">
         <div class="card">
@@ -1159,7 +1159,7 @@
 
 <?php
 
-  $query = "SELECT * FROM users WHERE User_type='Users'";
+  $query = "SELECT * FROM users WHERE User_type='Job Seeker'";
   $user_id = mysqli_query($connection,$query);
 
     if ($user_id = mysqli_query($connection, $query)) {
