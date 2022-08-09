@@ -411,10 +411,10 @@
                             </thead>
                             <tbody>
 
-                                <?php 
+        <?php 
 
-            $query = "SELECT * FROM users WHERE User_type != 'Recruiter' ";
-       $user_id = mysqli_query($connection,$query);
+        $query = "SELECT * FROM users WHERE User_type = 'User' ";
+        $user_id = mysqli_query($connection,$query);
 
         while($row=mysqli_fetch_array($user_id)){
 
