@@ -352,35 +352,8 @@ if (isset($_POST['search'])){
 
   $Location = $_GET['jobs'];
   $Job_title = $_GET['jobs'];
-
-     $sper_page=5;  
-                
-    if(isset($_GET['spage'])){
         
-        $spage = $_GET['spage'];
-        
-    } else {
-        
-        $spage ="";
-        
-    }
-  
-    if($spage =="" || $spage ==1){
-        
-        $spage_1=0;
-        
-    } else {
-        
-        $spage_1=($spage*$sper_page)-$sper_page;
-        
-    }
-
-  $s_post_query_count="SELECT * FROM jobs WHERE Location = '{$Location}' || Job_title = '{$Job_title}' ";
-  $s_find_count=mysqli_query($connection,$s_post_query_count);
-  $scount=mysqli_num_rows($s_find_count);
-  $scount=ceil($scount/$sper_page);
-        
-     $query="SELECT * FROM jobs WHERE Location = '{$Location}' || Job_title = '{$Job_title}' ORDER BY id DESC LIMIT $spage_1, $sper_page ";
+     $query="SELECT * FROM jobs WHERE Location = '{$Location}' || Job_title = '{$Job_title}' ORDER BY id DESC LIMIT 5 ";
      $select_user_profile = mysqli_query($connection,$query);
 
       
@@ -468,64 +441,10 @@ if (isset($_POST['search'])){
 
                 <?php          
      }
-?>
-
-    <ul class="pager">
-
-        <?php
-                 
-              
-              for($s=1; $s<=$scount; $s++){
-                  
-                  if($s == $spage){
-                  
-                    echo "<li><a class='active_link' style='background-color : #000;' href='Available_jobs.php?jobs=$Job_title&spage={$s}'>{$s}</a></li>";
-                     
-                } else {
-                      
-                    echo "<li><a href='Available_jobs.php?jobs=$Job_title&spage={$s}'>{$s}</a></li>";    
-                      
-                  }
-                  
-              }
-
-
-          ?>
-    </ul>
-
-<?php
 
   }else{
 
-   $per_page=5;  
-                
-    if(isset($_GET['page'])){
-        
-        $page = $_GET['page'];
-        
-    } else {
-        
-        $page ="";
-        
-    }
-  
-    if($page =="" || $page ==1){
-        
-        $page_1=0;
-        
-    } else {
-        
-        $page_1=($page*$per_page)-$per_page;
-        
-    }
-
-    $post_query_count="SELECT * FROM jobs";
-    $find_count=mysqli_query($connection,$post_query_count);
-    $count=mysqli_num_rows($find_count);
-    $count=ceil($count/$per_page);
-
-
-    $query="SELECT * FROM jobs ORDER BY id DESC LIMIT $page_1, $per_page";
+    $query="SELECT * FROM jobs ORDER BY id DESC LIMIT 5";
     $Jobs_list=mysqli_query($connection,$query);
 
     while($row=mysqli_fetch_array($Jobs_list)){
@@ -617,33 +536,6 @@ if (isset($_POST['search'])){
 <?php
 
     }
-
-?>
-
-   <ul class="pager">
-
-        <?php
-                 
-              
-              for($i=1; $i<=$count; $i++){
-                  
-                  if($i == $page){
-                  
-                    echo "<li><a class='active_link' style='background-color : #000;' href='Available_jobs.php?page={$i}'>{$i}</a></li>";
-                     
-                } else {
-                      
-                    echo "<li><a href='Available_jobs.php?page={$i}'>{$i}</a></li>";    
-                      
-                  }
-                  
-              }
-
-
-          ?>
-    </ul>
-
-<?php
 
   }
   

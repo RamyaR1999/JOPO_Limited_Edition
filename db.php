@@ -1,6 +1,6 @@
 <?php
 
-$connection=mysqli_connect('localhost','root','','jopo_edition','3306');
+$connection=mysqli_connect('localhost','root','','jopo_trial_version','3306');
 
    if($connection){
        

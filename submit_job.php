@@ -53,18 +53,6 @@ if(isset($_SESSION['id'])){
 
          $error = 0;
 
-         $row_query="SELECT * FROM jobs ";
-
-    $search_users=mysqli_query($connection, $row_query);
-
-if ($search_users = mysqli_query($connection, $row_query)) {
-
-        $rowcount = mysqli_num_rows( $search_users );
-
-        if($rowcount == 5){
-            $not_post= '5 jobs already exist';
-        }else{
-
       if(!empty($Job_title) && !empty($Job_description) && !empty($Location_country) && !empty($Job_type) && !empty($Work_type)){
       // if(!empty($Skills)){ 
 
@@ -123,10 +111,7 @@ if ($search_users = mysqli_query($connection, $row_query)) {
 
           }else{
         $message = "All fields are required *";
-       }
-
-       }
-   }
+       }  
          
           }else {         
               $message = ""; 
@@ -490,8 +475,7 @@ if ($search_users = mysqli_query($connection, $row_query)) {
                                 <h4 class="card-title">Post Job &nbsp;<i class="fas fa-edit"
                                         style='color:crimson; font-size:15px;'></i>
                                 </h4>
-                                
-                                <h6 class="" style="color:#ff0017"><?php echo $not_post; ?></h6>
+
                                 <h6 class="" style="color:#ff0017"><?php echo $message; ?></h6>
 
                                 <form method="POST" class="my-login-validation" enctype="multipart/form-data">

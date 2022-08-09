@@ -2,7 +2,7 @@
 <?php include "db.php"; ?>
 <?php
 
-if(isset($_POST['submit'])){
+if(isset($_POST['submit'])){ 
      
 //    require 'PHPMailer/PHPMailerAutoload.php';
 //    require('phpmailer/class.phpmailer.php');
@@ -46,12 +46,9 @@ $rndno=rand(100000, 999999);
          $Role =$_POST['Role'];
          $Post_count =$_POST['Post_count'];
          $Recruiters_note =$_POST['Recruiters_note'];
-         $User_type =$_POST['User_type'];
          $CV_date = $_POST['CV_date'];
          $CV_date = date('d M Y');
          $email_verification_link = $_POST['email_verification_link'];
-
-         $User_type ='Users';
 
          $CV = $_FILES['file']['name'];
          $upload_tempname = $_FILES['file']['tmp_name'];
@@ -60,23 +57,8 @@ $rndno=rand(100000, 999999);
          $otp=$_POST['otp'];
          $otp=$rndno;
          $error = 0;
-         $user_error = 0;
 
         move_uploaded_file($upload_tempname,$upload_dir.'/'.$CV);
-
-        if(!$user_error){
-            $check_user= "SELECT * FROM users WHERE User_type = '{$User_type}' ";
-            $check_user_query = mysqli_query($connection,$check_user);
-
-            if(mysqli_num_rows($check_user_query) > 0){
-
-            $row = mysqli_fetch_assoc($check_user_query);
-
-            if($User_type==$row['User_type'])
-            {
-            $message_User= "Already 1 User exists";
-            }
-            }else {
 
       if(!empty($Fullname) && !empty($Email) && !empty($Password)
       && !empty($Confirm_password) && !empty($Skills)){
@@ -139,9 +121,9 @@ $rndno=rand(100000, 999999);
 
 
     $query = "INSERT INTO users
-    (Fullname,Email,email_verification_link,Password,Confirm_password,Phone,Image,City,Industry,Skills,Function,Education,Experience_years,Experience_months,Current_Salary_lakhs,Current_Salary_thousand,Expected_Salary_lakhs,Expected_Salary_thousand,Company_Name,GST,PAN_No,Role,Post_count,Recruiters_note,CV,CV_date,otp,User_type) ";
+    (Fullname,Email,email_verification_link,Password,Confirm_password,Phone,Image,City,Industry,Skills,Function,Education,Experience_years,Experience_months,Current_Salary_lakhs,Current_Salary_thousand,Expected_Salary_lakhs,Expected_Salary_thousand,Company_Name,GST,PAN_No,Role,Post_count,Recruiters_note,CV,CV_date,otp) ";
     $query .= "VALUES
-    ('{$Fullname}','{$Email}','{$link}','{$Password}','{$Confirm_password}','{$Phone}','profile.png','$City','$Industry','$Skills','$Function','$Education','$Experience_years','$Experience_months','$Current_Salary_lakhs','$Current_Salary_thousand','$Expected_Salary_lakhs','$Expected_Salary_thousand','$Company_Name','$GST','$PAN_No','$Role','0','$Recruiters_note','$CV','$CV_date','$rndno','$User_type')";
+    ('{$Fullname}','{$Email}','{$link}','{$Password}','{$Confirm_password}','{$Phone}','profile.png','$City','$Industry','$Skills','$Function','$Education','$Experience_years','$Experience_months','$Current_Salary_lakhs','$Current_Salary_thousand','$Expected_Salary_lakhs','$Expected_Salary_thousand','$Company_Name','$GST','$PAN_No','$Role','0','$Recruiters_note','$CV','$CV_date','$rndno')";
 
     $register_query = mysqli_query($connection,$query);
 
@@ -183,11 +165,19 @@ $rndno=rand(100000, 999999);
     }
     }else{
 
+    // $empty_email = "email is required";
+    // $empty_password = "password is required";
+    // $empty_cpassword = "confirm password is required";
+    // $empty_phone = "phone number is required";
+    // $empty_city = "city is required";
+    // $empty_industry = "industry is required";
+    // $empty_function = "function is required";
+    // $empty_education = "education is required";
+    // $empty_experience = "experience is required";
+    // $empty_salary = "salary is required";
+    // $empty_cv = "CV is required";
     $message = "All fields are required *";
     }
-
-    }
-}
 
     }else {
     $message = "";
@@ -477,8 +467,7 @@ $rndno=rand(100000, 999999);
                             <div class="card fat">
                                 <div class="card-body">
                                     <h4 class="card-title">Sign Up</h4>
-                                    
-                                    <h6 class="" style="color:#ff0017"><?php echo $message_User; ?></h6>
+
                                     <h6 class="" style="color:#ff0017"><?php echo $message; ?></h6>
                                     <form method="POST" class="my-login-validation" enctype="multipart/form-data">
                                         <div class="form-group">
